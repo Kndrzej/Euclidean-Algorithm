@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+<body>
+	<div class="row container-fuild">
+		<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xs-12">Greatest common divisor</div>
+	</div>
+	<div class="row container-fuild">
+		<div class="col-6 col-lg-6 col-sm-6 col-md-6 col-xs-6">
+			<p>Number one</p>
+			<input type="text" id="num1" />
+		</div>
+		<div class="col-6 col-lg-6 col-sm-6 col-md-6 col-xs-6">
+			<p>Number two</p>
+			<input type="text" id="num2" />
+		</div>
+		<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xs-12">
+			<input id="result" type="submit" onclick="gcd()" value="Calculate"/>
+		</div>
+	</div>
+</body>
+<style>
+body{
+	background-color:black;
+	color:yellow;
+}
+.col-6, .col-lg-6, .col-sm-6, .col-md-6, .col-xs-6{
+	width: 80%;
+	text-align: center;
+	font-size: 1.5em;
+}
+.col-12, .col-lg-12, .col-sm-12, .col-md-12, .col-xs-12{
+	text-align: center;
+	font-size: 3em;
+	padding-bottom: 30px;
+}
+#result{
+	background-color:black;
+	color:yellow;
+	border: none;
+	padding: 30px;
+}
+</style>
+<script>
+//greatest common divisor
+function gcd(){
+	var num1 = Number(document.getElementById('num1').value);
+	var num2 = Number(document.getElementById('num2').value);
+	if(Number(num1)==0&&!isNaN(num2)){
+		window.alert(num2);
+		
+	}
+	else if(!isNaN(num1)&&!isNaN(num2)){
+		//dopracuj przypadek z 0
+		while(num1!=num2){
+			console.log(num1,num2);
+			//confirm("dalej");
+			if(Number(num1)<Number(num2)){
+				num2=Number(num2-num1);
+				
+			}
+			else
+				num1=Number(num1-num2);	
+			console.log(num1,num2);	
+		}
+		window.alert(num1);
+	}
+	else{
+		window.alert('write two numbers bigger!');
+	}
+}
+</script>
+</html>

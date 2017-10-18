@@ -20,7 +20,12 @@
 			<input type="text" id="num2" />
 		</div>
 		<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xs-12">
-			<input id="result" type="submit" onclick="gcd()" value="Calculate"/>
+			<input id="calculate" type="submit" onclick="gcd()" value="Calculate"/>
+		</div>
+	</div>
+	<div class="row container-fuild">
+		<div class="col-12 col-lg-12 col-sm-12 col-md-12 col-xs-12">
+			<div id="result"></div>
 		</div>
 	</div>
 </body>
@@ -30,21 +35,33 @@ body{
 	color:yellow;
 }
 .col-6, .col-lg-6, .col-sm-6, .col-md-6, .col-xs-6{
-	width: 80%;
+	width: 100%;
 	text-align: center;
 	font-size: 1.5em;
+}
+input{
+	width: 80%;
 }
 .col-12, .col-lg-12, .col-sm-12, .col-md-12, .col-xs-12{
 	text-align: center;
 	font-size: 3em;
 	padding-bottom: 30px;
+	margin-top: 40px;
 }
-#result{
+#calculate{
 	background-color:black;
 	color:yellow;
 	border: none;
-	padding: 30px;
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
 }
+#result{
+	font-size: 4em;
+}
+#calculate:focus { outline: none !important;
+   box-shadow:none;
+ }
 </style>
 <script>
 //greatest common divisor
@@ -52,13 +69,15 @@ function gcd(){
 	var num1 = Number(document.getElementById('num1').value);
 	var num2 = Number(document.getElementById('num2').value);
 	if(Number(num1)==0&&!isNaN(num2)){
-		window.alert(num2);
-		
+		document.getElementById('result').innerHTML = num2;
+	}
+	else if(Number(num2)==0&&!isNaN(num1)){
+		document.getElementById('result').innerHTML = num1;
 	}
 	else if(!isNaN(num1)&&!isNaN(num2)){
 		//dopracuj przypadek z 0
 		while(num1!=num2){
-			console.log(num1,num2);
+			
 			//confirm("dalej");
 			if(Number(num1)<Number(num2)){
 				num2=Number(num2-num1);
@@ -66,12 +85,12 @@ function gcd(){
 			}
 			else
 				num1=Number(num1-num2);	
-			console.log(num1,num2);	
+			
 		}
-		window.alert(num1);
+		document.getElementById('result').innerHTML = num1;
 	}
 	else{
-		window.alert('write two numbers bigger!');
+		document.getElementById('result').innerHTML = "Write two numbers!";
 	}
 }
 </script>
